@@ -6,7 +6,7 @@
     android:paddingRight="100px"
     android:paddingTop="100px"
     android:paddingBottom="100px"
-    tools:context="com.example.saturn.tennisreport.GhiTranDau"
+    tools:context="com.example.hatde.tennisrecord.GhiTranDau"
     android:orientation="vertical">
 
     <Button

@@ -12,6 +12,11 @@ public class TranDau extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tran_dau);
+        BangTiSo bangTiSo = (BangTiSo) findViewById(R.id.csBoard1);
+        bangTiSo.setPlayer1("Adam");
+        bangTiSo.setPlayer2("Zerk");
+        bangTiSo.setNumSet(5);
+        bangTiSo.setScore(1,1,5);
     }
 
 

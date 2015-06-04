@@ -4,9 +4,9 @@
     <string name="app_name">Tennis Record</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_ghi_tran_dau">Ghi Tráº­n Äáº¥u</string>
-    <string name="title_activity_tran_dau">Tráº­n Äáº¥u</string>
-    <string name="title_activity_thong_tin">ThÃ´ng Tin</string>
+    <string name="title_activity_ghi_tran_dau">Ghi Trận Đấu</string>
+    <string name="title_activity_tran_dau">Trận Đấu</string>
+    <string name="title_activity_thong_tin">Thông Tin</string>
     <string-array name="handicap_arrays">
         <item>None</item>
         <item>1 vs 2</item>

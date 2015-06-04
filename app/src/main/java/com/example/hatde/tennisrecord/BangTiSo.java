@@ -1,79 +1,177 @@
 package com.example.hatde.tennisrecord;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 /**
  * Created by Saturn on 6/3/2015.
  */
-public class BangTiSo extends View {
+public class BangTiSo extends LinearLayout {
 
-    int num_set;
-    String player_1 = "A";
-    String player_2= "B";
-    int current_player = 1;
-    int background_color = Color.WHITE;
-    int line_color = Color.parseColor("#088da5");
+    BoardInfo boardInfo;
 
+    //int background_color = Color.WHITE;
+    //int line_color = Color.parseColor("#088da5");
+    private View convertView;
     private Paint mPaint;
     public int mFontSize = 12;
 
+    private LayoutInflater inflater;
     private int mWidth = 700;
     private int mHeight = 200;
+    public BangTiSo(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        initializeViews(context);
+    }
     public BangTiSo(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initializeViews(context);
 
 
-
-        // Then allow overrides from XML
+        /*// Then allow overrides from XML
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
                 R.styleable.BangTiSo,
                 0, 0);
 
         try {
-            background_color = a.getColor(R.styleable.BangTiSo_background_color, Color.WHITE);
-            line_color = a.getColor(R.styleable.BangTiSo_line_color, Color.BLUE);
+            //background_color = a.getColor(R.styleable.BangTiSo_background_color, Color.WHITE);
+            //line_color = a.getColor(R.styleable.BangTiSo_line_color, Color.BLUE);
 
         } finally {
             a.recycle();
-        }
+        }*/
 
-        commonSetup();
-    }
-    private void commonSetup() {
 
-        mPaint = new Paint();
-        mPaint.setColor(line_color);
-        // Scale the desired text size to match screen density
-        mPaint.setTextSize(mFontSize * getResources().getDisplayMetrics().density);
-        mPaint.setStrokeWidth(2f);
-        setPadding(5, 5, 5, 5);
     }
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(mWidth, mHeight);
-    }
+    //@Override
+    //protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        //setMeasuredDimension(mWidth, mHeight);
+
+    //}
     public BangTiSo(Context context) {
         super(context);
-        commonSetup();
+        initializeViews(context);
+
+    }
+
+    private void initializeViews(Context context) {
+        inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertView = inflater.inflate(R.layout.matchboard, this);
+
+        boardInfo = new BoardInfo();
     }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        int top = getPaddingTop();
+        /*int top = getPaddingTop();
         int bot = mHeight - getPaddingBottom();
         int leftSide = (int) (mWidth*0.10f);
         int rightSide = (int) (mWidth*0.90f);
         Paint.Style oldStyle = mPaint.getStyle();
         mPaint.setStyle(Paint.Style.STROKE);
         canvas.drawRect(leftSide, top, rightSide, bot, mPaint);
-        mPaint.setStyle(oldStyle);
+        mPaint.setStyle(oldStyle);*/
+    }
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+    }
+
+    //Đặt thông tin cho bảng điểm
+    public void setInfo(BoardInfo info)
+    {
+        boardInfo = info;
+    }
+    //Đặt tên cho player1
+    public void setPlayer1(String name)
+    {
+        TextView player1 = (TextView)convertView.findViewById(R.id.txPlayer1);
+        boardInfo.Player1 = name;
+        player1.setText(name);
+    }
+    //Đặt tên cho player2
+    public void setPlayer2(String name)
+    {
+        TextView player2 = (TextView)convertView.findViewById(R.id.txPlayer2);
+        boardInfo.Player2 = name;
+        player2.setText(name);
+    }
+    //Đặt số set trận đấu
+    public boolean setNumSet(int set)
+    {
+        if(boardInfo.numSet == set)//nếu ko thay đổi
+        {
+            return true;
+        }
+        if(set <= 0 || set > 5)//vượt quá số set
+        {
+            return false;
+        }
+        boardInfo.numSet = set;
+
+        //Cài lại player 1
+        TableRow row1 = (TableRow)convertView.findViewById(R.id.csrow1);
+        row1.removeAllViews();
+
+        View temp_player1 = inflater.inflate(R.layout.tvplayer_layout, null);
+        temp_player1.setId(R.id.txPlayer1);
+        row1.addView(temp_player1);
+        setPlayer1(boardInfo.Player1);
+        for(int i =0; i < boardInfo.numSet; i++)
+        {
+            View v = inflater.inflate(R.layout.tvscore_layout, null);
+            row1.addView(v);
+        }
+
+        //Cài lại player 2
+        TableRow row2 = (TableRow)convertView.findViewById(R.id.csrow2);
+        row2.removeAllViews();
+
+        View temp_player2 = inflater.inflate(R.layout.tvplayer_layout, null);
+        temp_player2.setId(R.id.txPlayer2);
+        row2.addView(temp_player2);
+        setPlayer2(boardInfo.Player2);
+        for(int i =0; i < boardInfo.numSet; i++)
+        {
+            View v = inflater.inflate(R.layout.tvscore_layout, null);
+            row2.addView(v);
+        }
+        return true;
+    }
+
+    //Ghi điểm
+    public void setScore(int player, int set, int score)
+    {
+        //KT input
+        if(player != 1 && player != 2)
+        {
+            return;
+        }
+        if(set <= 0 || set > boardInfo.numSet)
+        {
+            return;
+        }
+
+        //Lấy TextView
+        TableLayout tableLayout = (TableLayout) convertView.findViewById(R.id.cstable);
+        TableRow row =  (TableRow)tableLayout.getChildAt(player-1);
+        TextView setScore = (TextView) row.getChildAt(set);
+
+        //Ghi điểm
+        setScore.setText(String.valueOf(score));
     }
 }
