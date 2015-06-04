@@ -7,11 +7,10 @@
     tools:context="com.example.hatde.tennisrecord.TranDau">
     <com.example.hatde.tennisrecord.BangTiSo
         android:id="@+id/lowGauge"
-
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         style="@style/RoundedBorderHolo"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="73dp"
-         />
+        />
 </RelativeLayout>
