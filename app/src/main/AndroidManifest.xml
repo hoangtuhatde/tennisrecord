@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".GhiTranDau"
+            android:label="@string/title_activity_ghi_tran_dau" >
+        </activity>
+        <activity
+            android:name=".TranDau"
+            android:label="@string/title_activity_tran_dau" >
+        </activity>
+        <activity
+            android:name=".ThongTin"
+            android:label="@string/title_activity_thong_tin" >
+        </activity>
     </application>
 
 </manifest>
