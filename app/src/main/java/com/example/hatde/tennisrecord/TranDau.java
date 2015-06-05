@@ -1,5 +1,6 @@
 package com.example.hatde.tennisrecord;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,10 @@ public class TranDau extends ActionBarActivity {
 
     GridView gridView;
     ActionAdapter actionAdapter;
+    String p1;
+    String p2;
+    String location;
+    Intent i = getIntent();
     static final String[] startAction = new String[] {
             "null", "Ace","Force error", "Unforce error" };
     @Override
@@ -23,11 +28,13 @@ public class TranDau extends ActionBarActivity {
         TextView name_p1 = (TextView)findViewById(R.id.tvNamePlayer1);
         TextView name_p2 = (TextView)findViewById(R.id.tvNamePlayer2);
         BangTiSo bangTiSo = (BangTiSo) findViewById(R.id.csBoard1);
-        bangTiSo.setPlayer1("Adam");
-        name_p1.setText("Adam");
+        p1 = i.getStringExtra("p1");
+        p2 = i.getStringExtra("p2");
+        bangTiSo.setPlayer1(p1);
+        name_p1.setText(p1);
 
-        bangTiSo.setPlayer2("Zerk");
-        name_p2.setText("Zerk");
+        bangTiSo.setPlayer2(p2);
+        name_p2.setText(p2);
         bangTiSo.setNumSet(5);
         bangTiSo.setScore(1,1,5);
 

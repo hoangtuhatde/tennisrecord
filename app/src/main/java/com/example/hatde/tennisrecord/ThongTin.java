@@ -20,26 +20,26 @@ public class ThongTin extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_tin);
         Button btStartMatch = (Button)findViewById(R.id.btStartMatch_info);
-        EditText etP1 = (EditText) findViewById(R.id.edPlayer1);
-        EditText etP2 = (EditText) findViewById(R.id.edPlayer2);
-        EditText etLocation = (EditText) findViewById(R.id.edLocation);
-        Spinner spType = (Spinner) findViewById(R.id.spinner_Type);
-        Spinner spHandicap = (Spinner) findViewById(R.id.spinner_handicap);
-        final String p1 = etP1.getText().toString();
-        final String p2 = etP2.getText().toString();
-        final String location = etLocation.getText().toString();
-        final String type = spType.getSelectedItem().toString();
-        final String handicap = spHandicap.getSelectedItem().toString();
+        final EditText etP1 = (EditText) findViewById(R.id.edPlayer1);
+        final EditText etP2 = (EditText) findViewById(R.id.edPlayer2);
+        final EditText etLocation = (EditText) findViewById(R.id.edLocation);
+        final Spinner spType = (Spinner) findViewById(R.id.spinner_Type);
+        final Spinner spHandicap = (Spinner) findViewById(R.id.spinner_handicap);
 
         btStartMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String p1 = etP1.getText().toString();
+                final String p2 = etP2.getText().toString();
+                final String location = etLocation.getText().toString();
+                final String type = spType.getSelectedItem().toString();
+                final String handicap = spHandicap.getSelectedItem().toString();
                 Intent myIntent = new Intent(ThongTin.this, TranDau.class);
                 myIntent.putExtra("p1", p1);
                 myIntent.putExtra("p2", p2);
                 myIntent.putExtra("location", location);
-                myIntent.putExtra("type", location);
-                myIntent.putExtra("handicap", location);
+                myIntent.putExtra("type", type);
+                myIntent.putExtra("handicap", handicap);
                 ThongTin.this.startActivity(myIntent);
             }
         });
