@@ -33,15 +33,19 @@ public class ActionAdapter extends BaseAdapter {
         } else {
             gridView = (View) convertView;
         }
+        if(tennisAction[position].equals("null"))
+        {
+            gridView = inflater.inflate(R.layout.null_button_action, null);
+        }
+        else {
+            // get layout from mobile.xml
+            gridView = inflater.inflate(R.layout.button_action, null);
 
-        // get layout from mobile.xml
-        gridView = inflater.inflate(R.layout.button_action, null);
-
-        // set value into textview
-        Button button = (Button) gridView
-                .findViewById(R.id.btAction);
-        button.setText(tennisAction[position]);
-    
+            // set value into textview
+            Button button = (Button) gridView
+                    .findViewById(R.id.btAction);
+            button.setText(tennisAction[position]);
+        }
         return gridView;
     }
     public void UpdateAction(String[] TennisAction)

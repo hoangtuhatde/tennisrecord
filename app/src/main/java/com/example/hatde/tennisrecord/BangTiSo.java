@@ -102,6 +102,7 @@ public class BangTiSo extends LinearLayout {
         TextView player1 = (TextView)convertView.findViewById(R.id.txPlayer1);
         boardInfo.Player1 = name;
         player1.setText(name);
+
     }
     //Đặt tên cho player2
     public void setPlayer2(String name)
@@ -109,6 +110,7 @@ public class BangTiSo extends LinearLayout {
         TextView player2 = (TextView)convertView.findViewById(R.id.txPlayer2);
         boardInfo.Player2 = name;
         player2.setText(name);
+
     }
     //Đặt số set trận đấu
     public boolean setNumSet(int set)

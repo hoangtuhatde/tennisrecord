@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 
 
 public class TranDau extends ActionBarActivity {
@@ -14,14 +15,19 @@ public class TranDau extends ActionBarActivity {
     GridView gridView;
     ActionAdapter actionAdapter;
     static final String[] startAction = new String[] {
-            "Win", "Ace","Force error", "Unforce error" };
+            "null", "Ace","Force error", "Unforce error" };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tran_dau);
+        TextView name_p1 = (TextView)findViewById(R.id.tvNamePlayer1);
+        TextView name_p2 = (TextView)findViewById(R.id.tvNamePlayer2);
         BangTiSo bangTiSo = (BangTiSo) findViewById(R.id.csBoard1);
         bangTiSo.setPlayer1("Adam");
+        name_p1.setText("Adam");
+
         bangTiSo.setPlayer2("Zerk");
+        name_p2.setText("Zerk");
         bangTiSo.setNumSet(5);
         bangTiSo.setScore(1,1,5);
 

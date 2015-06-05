@@ -24,6 +24,32 @@
         android:layout_alignParentTop="true" />
 
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Player A"
+            android:id="@+id/tvNamePlayer1"
+            android:layout_weight="1"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Player B"
+            android:id="@+id/tvNamePlayer2"
+            android:layout_weight="1"
+            android:gravity="center" />
+    </LinearLayout>
+
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
