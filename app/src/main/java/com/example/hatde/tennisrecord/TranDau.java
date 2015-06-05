@@ -4,10 +4,17 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
 
 public class TranDau extends ActionBarActivity {
 
+    GridView gridView;
+    ActionAdapter actionAdapter;
+    static final String[] startAction = new String[] {
+            "Win", "Ace","Force error", "Unforce error" };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +24,21 @@ public class TranDau extends ActionBarActivity {
         bangTiSo.setPlayer2("Zerk");
         bangTiSo.setNumSet(5);
         bangTiSo.setScore(1,1,5);
+
+        gridView = (GridView) findViewById(R.id.gvAction);
+        actionAdapter = new ActionAdapter(this, startAction);
+        gridView.setAdapter(actionAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                //Sử lý khi chọn action
+                String[] strAction = new String[] {
+                        "Ace","Force error", "Unforce error" };
+                actionAdapter.UpdateAction(strAction);
+                actionAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
 
