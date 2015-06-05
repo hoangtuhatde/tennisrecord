@@ -18,7 +18,7 @@ public class TranDau extends ActionBarActivity {
     String p1;
     String p2;
     String location;
-    Intent i = getIntent();
+    Intent i;
     static final String[] startAction = new String[] {
             "null", "Ace","Force error", "Unforce error" };
     @Override
@@ -28,8 +28,10 @@ public class TranDau extends ActionBarActivity {
         TextView name_p1 = (TextView)findViewById(R.id.tvNamePlayer1);
         TextView name_p2 = (TextView)findViewById(R.id.tvNamePlayer2);
         BangTiSo bangTiSo = (BangTiSo) findViewById(R.id.csBoard1);
-        p1 = i.getStringExtra("p1");
-        p2 = i.getStringExtra("p2");
+        i = getIntent();
+        Bundle extras = i.getExtras();
+        p1 = extras.getString("p1");
+        p2 = extras.getString("p2");
         bangTiSo.setPlayer1(p1);
         name_p1.setText(p1);
 

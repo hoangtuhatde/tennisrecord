@@ -35,11 +35,13 @@ public class ThongTin extends ActionBarActivity {
                 final String type = spType.getSelectedItem().toString();
                 final String handicap = spHandicap.getSelectedItem().toString();
                 Intent myIntent = new Intent(ThongTin.this, TranDau.class);
-                myIntent.putExtra("p1", p1);
-                myIntent.putExtra("p2", p2);
-                myIntent.putExtra("location", location);
-                myIntent.putExtra("type", type);
-                myIntent.putExtra("handicap", handicap);
+                Bundle extras = new Bundle();
+                extras.putString("p1", p1);
+                extras.putString("p2", p2);
+                extras.putString("location", location);
+                extras.putString("type", type);
+                extras.putString("handicap", handicap);
+                myIntent.putExtras(extras);
                 ThongTin.this.startActivity(myIntent);
             }
         });
