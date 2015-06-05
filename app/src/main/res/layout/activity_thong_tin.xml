@@ -15,15 +15,16 @@
             android:id="@+id/tvPlayer1"
             android:text="Player 1: "
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:gravity="center|left" />
+            android:gravity="center|left"
+            android:layout_gravity="center" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
             android:ems="5"
-            android:id="@+id/edPlayer1" />
+            android:id="@+id/edPlayer1"
+            android:hint="Name" />
 
     </TableRow>
     <TableRow
@@ -36,15 +37,16 @@
             android:id="@+id/tvPlayer2"
             android:text="Player 2: "
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:gravity="center|left" />
+            android:gravity="center|left"
+            android:layout_gravity="center" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
             android:ems="5"
-            android:id="@+id/edPlayer2" />
+            android:id="@+id/edPlayer2"
+            android:hint="Name" />
 
     </TableRow>
 
@@ -60,7 +62,8 @@
             android:text="Location: "
             android:id="@+id/textView"
             android:layout_column="0"
-            android:gravity="left" />
+            android:gravity="left"
+            android:layout_gravity="center" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -83,7 +86,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Type: "
             android:id="@+id/textView2"
-            android:layout_column="0" />
+            android:layout_column="0"
+            android:layout_gravity="center" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -91,6 +95,29 @@
             android:id="@+id/spinner_Type"
             android:layout_column="1"
             android:entries="@array/type_arrays" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Set:"
+            android:id="@+id/tvNumSet"
+            android:layout_column="0"
+            android:layout_gravity="center" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:id="@+id/etNumSet"
+            android:layout_column="1"
+            android:hint="1 -> 5" />
 
     </TableRow>
 
@@ -105,7 +132,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Handicap: "
             android:id="@+id/textView3"
-            android:layout_column="0" />
+            android:layout_column="0"
+            android:layout_gravity="center" />
 
         <Spinner
             android:layout_width="match_parent"

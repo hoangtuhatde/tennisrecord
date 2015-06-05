@@ -38,7 +38,7 @@ public class TranDau extends ActionBarActivity {
         bangTiSo.setPlayer2(p2);
         name_p2.setText(p2);
         bangTiSo.setNumSet(5);
-        bangTiSo.setScore(1,1,5);
+        bangTiSo.setScore(1,1,"5");
 
         gridView = (GridView) findViewById(R.id.gvAction);
         actionAdapter = new ActionAdapter(this, startAction);
@@ -47,6 +47,10 @@ public class TranDau extends ActionBarActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
+                if(actionAdapter.tennisAction[position].equals("null"))
+                {
+                    return;
+                }
                 //Sử lý khi chọn action
                 String[] strAction = new String[] {
                         "Ace","Force error", "Unforce error" };

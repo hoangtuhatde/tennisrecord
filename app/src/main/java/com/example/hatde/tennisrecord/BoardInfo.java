@@ -1,5 +1,7 @@
 package com.example.hatde.tennisrecord;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -10,6 +12,11 @@ public class BoardInfo {
     public String Player1 = "Player A";
     public String Player2 = "Player B";
     public int currentPlayer = 1;
-    public List<Integer> player1_score;
-    public List<Integer> player2_score;
+    public ArrayList<String> player1_score;
+    public ArrayList<String> player2_score;
+    public BoardInfo(){
+        player1_score = new ArrayList<String>(Collections.nCopies(7, ""));
+        player2_score = new ArrayList<String>(Collections.nCopies(7, ""));
+
+    }
 }

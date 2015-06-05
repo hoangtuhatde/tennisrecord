@@ -14,7 +14,7 @@ import android.widget.TextView;
  */
 public class ActionAdapter extends BaseAdapter {
     private Context context;
-    private String[] tennisAction;
+    public String[] tennisAction;
 
     public ActionAdapter(Context context, String[] TennisAction) {
         this.context = context;
@@ -45,6 +45,17 @@ public class ActionAdapter extends BaseAdapter {
             Button button = (Button) gridView
                     .findViewById(R.id.btAction);
             button.setText(tennisAction[position]);
+
+            /*button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Sử lý khi chọn action
+                    String[] strAction = new String[] {
+                            "Ace","Force error", "Unforce error" };
+                    UpdateAction(strAction);
+                    notifyDataSetChanged();
+                }
+            });*/
         }
         return gridView;
     }

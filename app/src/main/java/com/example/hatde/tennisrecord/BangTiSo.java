@@ -95,6 +95,19 @@ public class BangTiSo extends LinearLayout {
     public void setInfo(BoardInfo info)
     {
         boardInfo = info;
+
+        //Cập nhật lại bảng điểm
+        setPlayer1(boardInfo.Player1);
+        setPlayer1(boardInfo.Player2);
+        setNumSet(boardInfo.numSet);
+        for(int i = 0; i < boardInfo.player1_score.size();i++)
+        {
+            setScore(1, i + 1, boardInfo.player1_score.get(i));
+        }
+        for(int j = 0; j < boardInfo.player2_score.size();j++)
+        {
+            setScore(2, j + 1, boardInfo.player2_score.get(j));
+        }
     }
     //Đặt tên cho player1
     public void setPlayer1(String name)
@@ -110,7 +123,6 @@ public class BangTiSo extends LinearLayout {
         TextView player2 = (TextView)convertView.findViewById(R.id.txPlayer2);
         boardInfo.Player2 = name;
         player2.setText(name);
-
     }
     //Đặt số set trận đấu
     public boolean setNumSet(int set)
@@ -156,7 +168,7 @@ public class BangTiSo extends LinearLayout {
     }
 
     //Ghi điểm
-    public void setScore(int player, int set, int score)
+    public void setScore(int player, int set, String score)
     {
         //KT input
         if(player != 1 && player != 2)
@@ -168,12 +180,21 @@ public class BangTiSo extends LinearLayout {
             return;
         }
 
+        if(player == 1)
+        {
+            boardInfo.player1_score.set(set - 1, score);
+        }
+        else if(player == 2)
+        {
+            boardInfo.player2_score.set(set - 1, score);
+        }
+
         //Lấy TextView
         TableLayout tableLayout = (TableLayout) convertView.findViewById(R.id.cstable);
         TableRow row =  (TableRow)tableLayout.getChildAt(player-1);
         TextView setScore = (TextView) row.getChildAt(set);
 
         //Ghi điểm
-        setScore.setText(String.valueOf(score));
+        setScore.setText(score);
     }
 }
