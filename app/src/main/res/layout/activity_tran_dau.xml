@@ -16,6 +16,29 @@
         android:id="@+id/textView4"
         android:paddingBottom="15px" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="HCM"
+            android:id="@+id/tvLocation"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="0:01"
+            android:id="@+id/tvTime"
+            android:layout_weight="1" />
+    </LinearLayout>
+
     <com.example.hatde.tennisrecord.BangTiSo
         android:id="@+id/csBoard1"
         android:layout_width="match_parent"
