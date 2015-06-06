@@ -6,6 +6,6 @@
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:text="layout_player"
     android:layout_margin="10px"
-    android:maxWidth="170px"
-    android:minWidth="170px" />
+    android:maxWidth="100px"
+    android:minWidth="100px" />
 
