@@ -21,6 +21,8 @@ public class TranDau extends ActionBarActivity {
     Intent i;
     static final String[] startAction = new String[] {
             "null", "Ace","Force error", "Unforce error" };
+    final String[] p1Turn = new String[] {
+            "Ace", "Return Winner", "Service Winner", "Return Error" , "Fault", "Ball in play"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,7 @@ public class TranDau extends ActionBarActivity {
         bangTiSo.setScore(1,1,"5");
 
         gridView = (GridView) findViewById(R.id.gvAction);
-        actionAdapter = new ActionAdapter(this, startAction);
+        actionAdapter = new ActionAdapter(this, p1Turn);
         gridView.setAdapter(actionAdapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
