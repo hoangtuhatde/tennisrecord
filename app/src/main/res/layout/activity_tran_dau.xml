@@ -73,6 +73,15 @@
             android:gravity="center" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="First Serve"
+        android:id="@+id/tvServe"
+        android:gravity="center"
+        android:padding="10px" />
+
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
