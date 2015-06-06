@@ -24,7 +24,8 @@
             android:inputType="textPersonName"
             android:ems="5"
             android:id="@+id/edPlayer1"
-            android:hint="Name" />
+            android:hint="Name"
+            android:text="Zún" />
 
     </TableRow>
     <TableRow
@@ -46,7 +47,8 @@
             android:inputType="textPersonName"
             android:ems="5"
             android:id="@+id/edPlayer2"
-            android:hint="Name" />
+            android:hint="Name"
+            android:text="Zín" />
 
     </TableRow>
 
@@ -71,7 +73,8 @@
             android:inputType="textPersonName"
             android:id="@+id/edLocation"
             android:ems="10"
-            android:layout_column="1" />
+            android:layout_column="1"
+            android:text="Zóm" />
 
     </TableRow>
 
@@ -117,7 +120,8 @@
             android:inputType="number"
             android:id="@+id/etNumSet"
             android:layout_column="1"
-            android:hint="1 -> 5" />
+            android:hint="1 -> 5"
+            android:text="1" />
 
     </TableRow>
 
