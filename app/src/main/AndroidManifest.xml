@@ -9,8 +9,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,18 +19,22 @@
         </activity>
         <activity
             android:name=".GhiTranDau"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_ghi_tran_dau" >
+            android:label="@string/title_activity_ghi_tran_dau"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".TranDau"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_tran_dau" >
+            android:label="@string/title_activity_tran_dau"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ThongTin"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_thong_tin" >
+            android:label="@string/title_activity_thong_tin"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ThongKe"
+            android:label="@string/title_activity_thong_ke" >
         </activity>
     </application>
 

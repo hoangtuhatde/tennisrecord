@@ -25,7 +25,15 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-
+        Button btStats = (Button)findViewById(R.id.btThongKe);
+        btStats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, ThongKe.class);
+                //myIntent.putExtra("key", value); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
     }
 
 

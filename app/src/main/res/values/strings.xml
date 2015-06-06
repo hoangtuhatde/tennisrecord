@@ -7,6 +7,7 @@
     <string name="title_activity_ghi_tran_dau">Ghi Trận Đấu</string>
     <string name="title_activity_tran_dau">Trận Đấu</string>
     <string name="title_activity_thong_tin">Thông Tin</string>
+
     <string-array name="handicap_arrays">
         <item>None</item>
         <item>1 vs 2</item>
@@ -16,4 +17,7 @@
         <item>No tie-break</item>
         <item>...</item>
     </string-array>
+
+    <string name="title_activity_thong_ke">ThongKe</string>
+
 </resources>
