@@ -17,7 +17,10 @@
         <item>No tie-break</item>
         <item>...</item>
     </string-array>
-
+    <string-array name="turn_arrays">
+        <item>Player 1</item>
+        <item>Player 2</item>
+        <item>...</item>
+    </string-array>
     <string name="title_activity_thong_ke">ThongKe</string>
-
 </resources>
