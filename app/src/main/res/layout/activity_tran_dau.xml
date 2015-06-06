@@ -52,7 +52,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="10px">
+        android:layout_margin="3px"
+        android:padding="2px">
 
         <TextView
             android:layout_width="wrap_content"
@@ -79,8 +80,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="First Serve"
         android:id="@+id/tvServe"
-        android:gravity="center"
-        android:padding="10px" />
+        android:gravity="center" />
 
     <GridView
         android:layout_width="match_parent"
@@ -89,7 +89,7 @@
         android:layout_weight="1"
         android:numColumns="2"
         android:layout_gravity="center"
-        android:padding="20px"
+        android:padding="5px"
         android:gravity="center" />
 
     <LinearLayout

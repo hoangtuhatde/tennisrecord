@@ -20,7 +20,7 @@ public class TranDau extends ActionBarActivity {
     String location;
     Intent i;
     static final String[] startAction = new String[] {
-            "null", "Ace","Force error", "Unforce error" };
+            "null", "Ace","Force error", "Unforce error" ,"A", "B", "C", "D"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
