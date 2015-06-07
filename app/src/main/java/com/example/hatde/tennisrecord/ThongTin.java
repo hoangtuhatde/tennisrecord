@@ -7,6 +7,8 @@ import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -15,23 +17,43 @@ import android.widget.TextView;
 
 public class ThongTin extends ActionBarActivity {
 
+    String[] arrayLocation = new String[] {
+            "HCM", "HN","Lào"};
+    String[] arrayPlayer = new String[] {
+            "Adam", "Menic","Mimo"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_tin);
         Button btStartMatch = (Button)findViewById(R.id.btStartMatch_info);
-        final EditText etP1 = (EditText) findViewById(R.id.edPlayer1);
-        final EditText etP2 = (EditText) findViewById(R.id.edPlayer2);
-        final EditText etLocation = (EditText) findViewById(R.id.edLocation);
+        final AutoCompleteTextView atP1 = (AutoCompleteTextView) findViewById(R.id.atPlayer1);
+        atP1.setThreshold(0);
+        final AutoCompleteTextView atP2 = (AutoCompleteTextView) findViewById(R.id.atPlayer2);
+        atP2.setThreshold(0);
+        final AutoCompleteTextView atLocation = (AutoCompleteTextView) findViewById(R.id.spinner_Location);
+        atLocation.setThreshold(0);
+        //lay ds location da luu
+        //arrayLocation = ...getListLocation
+
+        atLocation.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, arrayLocation));
+
+        //lay ds player da luu
+        //arrayPlayer = ...getListLocation
+        atP1.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, arrayPlayer));
+        atP2.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, arrayPlayer));
+
         final Spinner spType = (Spinner) findViewById(R.id.spinner_Type);
         final Spinner spHandicap = (Spinner) findViewById(R.id.spinner_handicap);
 
         btStartMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String p1 = etP1.getText().toString();
-                final String p2 = etP2.getText().toString();
-                final String location = etLocation.getText().toString();
+                final String p1 = atP1.getText().toString();
+                final String p2 = atP2.getText().toString();
+                final String location = atLocation.getText().toString();
                 final String type = spType.getSelectedItem().toString();
                 final String handicap = spHandicap.getSelectedItem().toString();
                 Intent myIntent = new Intent(ThongTin.this, TranDau.class);

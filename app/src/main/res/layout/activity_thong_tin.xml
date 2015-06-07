@@ -18,15 +18,12 @@
             android:gravity="center|left"
             android:layout_gravity="center" />
 
-        <EditText
+        <AutoCompleteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="5"
-            android:id="@+id/edPlayer1"
-            android:hint="Name"
-            android:text="Zún" />
-
+            android:ems="10"
+            android:id="@+id/atPlayer1"
+            android:hint="Name" />
     </TableRow>
     <TableRow
         android:id="@+id/tableRow2"
@@ -41,14 +38,13 @@
             android:gravity="center|left"
             android:layout_gravity="center" />
 
-        <EditText
+        <AutoCompleteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+
             android:ems="5"
-            android:id="@+id/edPlayer2"
-            android:hint="Name"
-            android:text="Zín" />
+            android:id="@+id/atPlayer2"
+            android:hint="Name" />
 
     </TableRow>
 
@@ -67,14 +63,12 @@
             android:gravity="left"
             android:layout_gravity="center" />
 
-        <EditText
-            android:layout_width="wrap_content"
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:id="@+id/edLocation"
-            android:ems="10"
+            android:id="@+id/spinner_Location"
             android:layout_column="1"
-            android:text="Zóm" />
+            android:entries="@array/turn_arrays" />
 
     </TableRow>
 
