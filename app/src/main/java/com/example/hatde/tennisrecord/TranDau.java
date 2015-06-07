@@ -29,13 +29,12 @@ public class TranDau extends ActionBarActivity {
     int p2SetScore;
     int p1nSetWin;
     int p2nSetWin;
+    int deuce;
+    int tiebreak;
     boolean firstServe;
     BangTiSo bangTiSo;
     TennisStatistic stats;
 
-    //int[][] scoreboard;
-    static final String[] startAction = new String[] {
-            "null", "Ace","Force error", "Unforce error" };
     final String[] p1Serve = new String[] {
             "P1 Ace", "P2 Return Winner", "P1 Service Winner", "P2 Return Error", "P1 Fault", "Ball in play"};
     final String[] p2Serve = new String[] {
@@ -59,6 +58,8 @@ public class TranDau extends ActionBarActivity {
         turn = extras.getLong("turn");
         nSet = extras.getInt("set");
         nGame = extras.getInt("game");
+        deuce = extras.getInt("deuce");
+        tiebreak = extras.getInt("tiebreak");
         set = 1;
 
         location = extras.getString("location");
@@ -222,19 +223,31 @@ public class TranDau extends ActionBarActivity {
             p1GameScore = 40;
         else if (p1GameScore == 40)
         {
-            if (p2GameScore == 40)
-                p1GameScore = 45;
-            else
+            if(deuce == 0)
                 p1WinGame();
+            else {
+                if (p2GameScore == 40)
+                {
+                    bangTiSo.setScore(1, 1, "Adv");
+                    bangTiSo.setScore(2, 1, "");
+                    p1GameScore = 45;
+                }
+                else if(p2GameScore == 45)
+                    p2GameScore = 40;
+                else
+                    p1WinGame();
+            }
         }
         else if(p1GameScore == 45)
+        {
             p1WinGame();
-        if(p1GameScore == 45) {
-            bangTiSo.setScore(1, 1, "Adv");
-            bangTiSo.setScore(2, 1, "");
         }
-        else
+        if (p1GameScore != 45 && p2GameScore != 45)
+        {
             bangTiSo.setScore(1, 1, String.valueOf(p1GameScore));
+            bangTiSo.setScore(2, 1, String.valueOf(p2GameScore));
+        }
+
     }
     public void p1WinGame()
     {
@@ -250,6 +263,7 @@ public class TranDau extends ActionBarActivity {
             tieBreak();
         }
         bangTiSo.setScore(1, nSet + 2 - set, String.valueOf(p1SetScore));
+        bangTiSo.setScore(2, nSet + 2 - set, String.valueOf(p2SetScore));
         p1GameScore = 0;
         p2GameScore = 0;
         bangTiSo.setScore(1, 1, "0");
@@ -281,19 +295,29 @@ public class TranDau extends ActionBarActivity {
             p2GameScore = 40;
         else if (p2GameScore == 40)
         {
-            if (p1GameScore == 40)
-                p2GameScore = 45;
-            else
+            if(deuce == 0)
                 p2WinGame();
+            else {
+                if (p1GameScore == 40) {
+                    bangTiSo.setScore(1, 1, "");
+                    bangTiSo.setScore(2, 1, "Adv");
+                    p2GameScore = 45;
+                }
+                else if(p1GameScore == 45)
+                    p1GameScore = 40;
+                else
+                    p2WinGame();
+            }
         }
         else if(p2GameScore == 45)
+        {
             p2WinGame();
-        if(p2GameScore == 45) {
-            bangTiSo.setScore(2, 1, "Adv");
-            bangTiSo.setScore(1, 1, "");
         }
-        else
+        if (p1GameScore != 45 && p2GameScore != 45)
+        {
+            bangTiSo.setScore(1, 1, String.valueOf(p1GameScore));
             bangTiSo.setScore(2, 1, String.valueOf(p2GameScore));
+        }
     }
     public void p2WinGame()
     {

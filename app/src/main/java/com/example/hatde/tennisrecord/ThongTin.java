@@ -25,7 +25,8 @@ public class ThongTin extends ActionBarActivity {
     String p1;
     String p2;
     String location;
-    String type;
+    int type;
+    int deuce;
     String set;
     String game;
     long turn;
@@ -55,19 +56,29 @@ public class ThongTin extends ActionBarActivity {
                 android.R.layout.simple_list_item_1, arrayPlayer));
 
         final Spinner spType = (Spinner) findViewById(R.id.spinner_Type);
+        final Spinner spDeuce = (Spinner) findViewById(R.id.spinner_Deuce);
         final Spinner spHandicap = (Spinner) findViewById(R.id.spinner_handicap);
         final Spinner spTurn = (Spinner) findViewById(R.id.spinner_Turn);
-        final TextView tvSet = (TextView) findViewById(R.id.tvNumSet);
-        final TextView tvGame = (TextView) findViewById(R.id.tvNumGame);
+        final EditText etNumSet = (EditText) findViewById(R.id.etNumSet);
+        final EditText etNumGame = (EditText) findViewById(R.id.etNumGame);
         btStartMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 p1 = atP1.getText().toString();
                 p2 = atP2.getText().toString();
                 location = atLocation.getText().toString();
-                type = spType.getSelectedItem().toString();
-                set = tvSet.getText().toString();
-                game = tvGame.getText().toString();
+                type = spType.getSelectedItemPosition();
+                if (type == 0)
+                    type = 1;
+                else if (type == 1)
+                    type = 0;
+                deuce = spDeuce.getSelectedItemPosition();
+                if (deuce == 0)
+                    deuce = 1;
+                else if (deuce == 1)
+                    deuce = 0;
+                set = etNumSet.getText().toString();
+                game = etNumGame.getText().toString();
                 turn = spTurn.getSelectedItemId();
                 handicap = spHandicap.getSelectedItem().toString();
                 if(!check()) {
@@ -79,11 +90,12 @@ public class ThongTin extends ActionBarActivity {
                 extras.putString("p1", p1);
                 extras.putString("p2", p2);
                 extras.putString("location", location);
-                extras.putString("type", type);
+                extras.putInt("tiebreak", type);
+                extras.putInt("deuce", deuce);
                 extras.putLong("turn", turn);
                 extras.putString("handicap", handicap);
-                extras.putString("set", set);
-                extras.putString("game", game);
+                extras.putInt("set", Integer.valueOf(set));
+                extras.putInt("game", Integer.valueOf(game));
                 myIntent.putExtras(extras);
                 ThongTin.this.startActivity(myIntent);
             }

@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Type: "
+            android:text="Tie-break: "
             android:id="@+id/textView2"
             android:layout_column="0"
             android:layout_gravity="center" />
@@ -103,6 +103,28 @@
             android:entries="@array/type_arrays" />
 
     </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="10px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Deuce: "
+                android:id="@+id/textView4"
+                android:layout_column="0"
+                android:layout_gravity="center" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner_Deuce"
+                android:layout_column="1"
+                android:entries="@array/deuce_arrays" />
+
+        </TableRow>
     <TableRow
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

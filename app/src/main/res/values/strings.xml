@@ -15,9 +15,12 @@
         <item>3ps/game</item>
     </string-array>
     <string-array name="type_arrays">
-        <item>Normal</item>
-        <item>No tie-break</item>
-        <item>...</item>
+        <item>Use</item>
+        <item>No use</item>
+    </string-array>
+    <string-array name="deuce_arrays">
+        <item>Use</item>
+        <item>No use</item>
     </string-array>
     <string-array name="turn_arrays">
         <item>Player 1</item>
