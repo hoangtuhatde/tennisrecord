@@ -259,8 +259,8 @@ public class TranDau extends ActionBarActivity {
         if (p1nSetWin > nSet / 2)
         {
             p1MatchWin();
-            p1nSetWin = 0;
-            p2nSetWin = 0;
+            p1SetScore = 0;
+            p2SetScore = 0;
         }
 
     }
@@ -316,8 +316,8 @@ public class TranDau extends ActionBarActivity {
         set++;
         p2nSetWin++;
         if (p2nSetWin > nSet / 2) {
-            p1nSetWin = 0;
-            p2nSetWin = 0;
+            p1SetScore = 0;
+            p2SetScore = 0;
             p2MatchWin();
         }
     }
