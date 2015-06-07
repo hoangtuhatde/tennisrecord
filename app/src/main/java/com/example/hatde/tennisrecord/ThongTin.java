@@ -47,6 +47,7 @@ public class ThongTin extends ActionBarActivity {
 
         final Spinner spType = (Spinner) findViewById(R.id.spinner_Type);
         final Spinner spHandicap = (Spinner) findViewById(R.id.spinner_handicap);
+        final Spinner spTurn = (Spinner) findViewById(R.id.spinner_Turn);
 
         btStartMatch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +63,7 @@ public class ThongTin extends ActionBarActivity {
                 extras.putString("p2", p2);
                 extras.putString("location", location);
                 extras.putString("type", type);
+                extras.putLong("turn", turn);
                 extras.putString("handicap", handicap);
                 myIntent.putExtras(extras);
                 ThongTin.this.startActivity(myIntent);
