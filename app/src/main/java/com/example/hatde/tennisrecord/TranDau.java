@@ -70,8 +70,8 @@ public class TranDau extends ActionBarActivity {
         bangTiSo.setPlayer2(p2);
         name_p2.setText(p2);
         bangTiSo.setNumSet(6);
-        bangTiSo.setScore(1, 1, "0");
-        bangTiSo.setScore(2, 1, "0");
+        //bangTiSo.setScore(1, 1, "0");
+        //bangTiSo.setScore(2, 1, "0");
         //scoreboard = new int[nSet + 1][nSet + 1];
 
         gridView = (GridView) findViewById(R.id.gvAction);
