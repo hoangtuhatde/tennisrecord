@@ -26,6 +26,10 @@
         <item>Player 1</item>
         <item>Player 2</item>
     </string-array>
+    <string-array name="whoHand_arrays">
+        <item>Player 1</item>
+        <item>Player 2</item>
+    </string-array>
 
     <string name="title_activity_thong_ke">ThongKe</string>
     <string name="title_activity_thong_ke_nguoi_choi">ThongKeNguoiChoi</string>

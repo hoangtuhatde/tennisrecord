@@ -217,6 +217,30 @@
             android:entries="@array/handicap_arrays" />
 
     </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="10px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Who Hands: "
+                android:id="@+id/textView5"
+                android:layout_column="0"
+                android:layout_gravity="center" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner_whoHand"
+                android:layout_column="1"
+                android:spinnerMode="dropdown"
+                android:transitionGroup="false"
+                android:entries="@array/whoHand_arrays" />
+
+        </TableRow>
 
     <TableRow
         android:layout_width="fill_parent"

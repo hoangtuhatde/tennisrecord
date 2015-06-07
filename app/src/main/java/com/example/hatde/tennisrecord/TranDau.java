@@ -7,8 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class TranDau extends ActionBarActivity {
@@ -306,7 +308,7 @@ public class TranDau extends ActionBarActivity {
             else
                 p1SetScore++;
         }
-        if(tiebreak == 1) {
+        else if(tiebreak == 1) {
             if (p1SetScore < nGame - 1)
                 p1SetScore++;
             else if (p1SetScore == nGame - 1 && p2SetScore <= p1SetScore - 1) {
@@ -341,7 +343,11 @@ public class TranDau extends ActionBarActivity {
     }
     public void p1MatchWin()
     {
-        //save data, end activity
+        Toast t = Toast.makeText(getApplicationContext(), "Player 1 Wins", Toast.LENGTH_SHORT);
+            t.show();
+        gridView.removeAllViews();
+        Button stat = (Button)findViewById(R.id.btStats);
+        stat.setEnabled(true);
     }
     public void p2WinPoint() {
         if (p2GameScore == 0)
@@ -408,7 +414,11 @@ public class TranDau extends ActionBarActivity {
     }
     public void p2MatchWin()
     {
-        //save data, end activity
+        Toast t = Toast.makeText(getApplicationContext(), "Player 2 Wins", Toast.LENGTH_SHORT);
+        t.show();
+        gridView.removeAllViews();
+        Button stat = (Button)findViewById(R.id.btStats);
+        stat.setEnabled(true);
     }
     public void tieBreak()
     {

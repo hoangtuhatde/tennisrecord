@@ -71,7 +71,7 @@ public class ThongTin extends ActionBarActivity {
                 location = atLocation.getText().toString();
                 type = spType.getSelectedItemPosition();
                 if (type == 0)
-                    type = 1;
+                    type = 0;
                 else if (type == 1)
                     type = 0;
                 deuce = spDeuce.getSelectedItemPosition();
