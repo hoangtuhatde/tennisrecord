@@ -56,6 +56,7 @@ public class ThongTin extends ActionBarActivity {
                 final String p2 = atP2.getText().toString();
                 final String location = atLocation.getText().toString();
                 final String type = spType.getSelectedItem().toString();
+                long turn = spTurn.getSelectedItemId();
                 final String handicap = spHandicap.getSelectedItem().toString();
                 Intent myIntent = new Intent(ThongTin.this, TranDau.class);
                 Bundle extras = new Bundle();
