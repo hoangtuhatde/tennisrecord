@@ -4,14 +4,20 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 
 public class LichSu extends ActionBarActivity {
-
+    ListView list;
+    MatchAdapter matchAdapter;
+    String[] temp = new String[]{"HN", "HCM","HN", "HCM","HN", "HCM","HN", "HCM"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lich_su);
+        list = (ListView)findViewById(R.id.lvMatch);
+        matchAdapter =new MatchAdapter(this, temp);
+        list.setAdapter(matchAdapter);
     }
 
 

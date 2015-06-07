@@ -224,4 +224,17 @@ public class BangTiSo extends LinearLayout {
         setScore.setBackgroundColor(Color.BLACK);
         setScore.setTextColor(Color.YELLOW);
     }
+    public void  setWinner(int player)
+    {
+        if(player == 1)
+        {
+            TextView player1 = (TextView)convertView.findViewById(R.id.txPlayer1);
+            player1.setTextColor(Color.RED);
+        }
+        else if(player == 2)
+        {
+            TextView player2 = (TextView)convertView.findViewById(R.id.txPlayer2);
+            player2.setTextColor(Color.RED);
+        }
+    }
 }

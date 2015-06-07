@@ -38,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
         btHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, ThongKe.class);
+                Intent myIntent = new Intent(MainActivity.this, LichSu.class);
                 //myIntent.putExtra("key", value); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
             }
