@@ -52,8 +52,16 @@ public class ThongTin extends ActionBarActivity {
         btStartMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String p1 = atP1.getText().toString();
-                final String p2 = atP2.getText().toString();
+                String p1 = atP1.getText().toString();
+                String p2 = atP2.getText().toString();
+                if(p1.equals(""))
+                {
+                    p1 = "Player A";
+                }
+                if(p2.equals(""))
+                {
+                    p2 = "Player B";
+                }
                 final String location = atLocation.getText().toString();
                 final String type = spType.getSelectedItem().toString();
                 long turn = spTurn.getSelectedItemId();
