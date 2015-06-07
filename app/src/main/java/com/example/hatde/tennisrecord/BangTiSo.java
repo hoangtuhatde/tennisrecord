@@ -131,7 +131,7 @@ public class BangTiSo extends LinearLayout {
         {
             return true;
         }
-        if(set <= 0 || set > 5)//vượt quá số set
+        if(set <= 0 || set > 6)//vượt quá số set
         {
             return false;
         }
