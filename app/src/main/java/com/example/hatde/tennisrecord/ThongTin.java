@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class ThongTin extends ActionBarActivity {
@@ -21,6 +22,14 @@ public class ThongTin extends ActionBarActivity {
             "HCM", "HN","Lào"};
     String[] arrayPlayer = new String[] {
             "Adam", "Menic","Mimo"};
+    String p1;
+    String p2;
+    String location;
+    String type;
+    String set;
+    String game;
+    long turn;
+    String handicap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,16 +57,23 @@ public class ThongTin extends ActionBarActivity {
         final Spinner spType = (Spinner) findViewById(R.id.spinner_Type);
         final Spinner spHandicap = (Spinner) findViewById(R.id.spinner_handicap);
         final Spinner spTurn = (Spinner) findViewById(R.id.spinner_Turn);
-
+        final TextView tvSet = (TextView) findViewById(R.id.tvNumSet);
+        final TextView tvGame = (TextView) findViewById(R.id.tvNumGame);
         btStartMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String p1 = atP1.getText().toString();
-                final String p2 = atP2.getText().toString();
-                final String location = atLocation.getText().toString();
-                final String type = spType.getSelectedItem().toString();
-                long turn = spTurn.getSelectedItemId();
-                final String handicap = spHandicap.getSelectedItem().toString();
+                p1 = atP1.getText().toString();
+                p2 = atP2.getText().toString();
+                location = atLocation.getText().toString();
+                type = spType.getSelectedItem().toString();
+                set = tvSet.getText().toString();
+                game = tvGame.getText().toString();
+                turn = spTurn.getSelectedItemId();
+                handicap = spHandicap.getSelectedItem().toString();
+                if(!check()) {
+                    Toast t = Toast.makeText(getApplicationContext(), "Dữ liệu không hợp lệ", Toast.LENGTH_SHORT);
+                    t.show();
+                }
                 Intent myIntent = new Intent(ThongTin.this, TranDau.class);
                 Bundle extras = new Bundle();
                 extras.putString("p1", p1);
@@ -66,13 +82,26 @@ public class ThongTin extends ActionBarActivity {
                 extras.putString("type", type);
                 extras.putLong("turn", turn);
                 extras.putString("handicap", handicap);
+                extras.putString("set", set);
+                extras.putString("game", game);
                 myIntent.putExtras(extras);
                 ThongTin.this.startActivity(myIntent);
             }
         });
     }
 
-
+    public boolean check()
+    {
+        if (Integer.valueOf(set) > 5 || Integer.valueOf(set) <= 0)
+            return false;
+        if (p1.equals(""))
+            return false;
+        if (p2.equals(""))
+            return false;
+        if (location.equals(""))
+            return false;
+        return true;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

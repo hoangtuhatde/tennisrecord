@@ -23,7 +23,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:id="@+id/atPlayer1"
-            android:hint="Name" />
+            android:hint="Name"
+            android:text="a" />
     </TableRow>
     <TableRow
         android:id="@+id/tableRow2"
@@ -44,7 +45,8 @@
 
             android:ems="5"
             android:id="@+id/atPlayer2"
-            android:hint="Name" />
+            android:hint="Name"
+            android:text="b" />
 
     </TableRow>
 
@@ -68,7 +70,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/spinner_Location"
             android:layout_column="1"
-            android:entries="@array/turn_arrays" />
+            android:entries="@array/turn_arrays"
+            android:text="c" />
 
     </TableRow>
 
@@ -139,7 +142,29 @@
             android:text="1" />
 
     </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Game:"
+            android:id="@+id/tvNumGame"
+            android:layout_column="0"
+            android:layout_gravity="center" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:id="@+id/etNumGame"
+            android:layout_column="1"
+            android:hint="1 -> 5"
+            android:text="1" />
+
+    </TableRow>
     <TableRow
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

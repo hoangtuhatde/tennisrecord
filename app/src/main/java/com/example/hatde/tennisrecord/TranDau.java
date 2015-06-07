@@ -22,6 +22,7 @@ public class TranDau extends ActionBarActivity {
     long turn;
     int nSet;
     int set;
+    int nGame;
     int p1GameScore;
     int p2GameScore;
     int p1SetScore;
@@ -47,6 +48,7 @@ public class TranDau extends ActionBarActivity {
         setContentView(R.layout.activity_tran_dau);
         TextView name_p1 = (TextView)findViewById(R.id.tvNamePlayer1);
         TextView name_p2 = (TextView)findViewById(R.id.tvNamePlayer2);
+        TextView tvLocation = (TextView)findViewById(R.id.tvLocation);
         final TextView tvServe = (TextView)findViewById(R.id.tvServe);
         bangTiSo = (BangTiSo) findViewById(R.id.csBoard1);
         stats = new TennisStatistic();
@@ -55,11 +57,14 @@ public class TranDau extends ActionBarActivity {
         p1 = extras.getString("p1");
         p2 = extras.getString("p2");
         turn = extras.getLong("turn");
+        nSet = extras.getInt("set");
+        nGame = extras.getInt("game");
         set = 1;
-        nSet = 5;
+
         location = extras.getString("location");
         bangTiSo.setPlayer1(p1);
         name_p1.setText(p1);
+        tvLocation.setText(location);
         firstServe = true;
         p1GameScore = 0;
         p2GameScore = 0;
@@ -69,10 +74,9 @@ public class TranDau extends ActionBarActivity {
         p2nSetWin = 0;
         bangTiSo.setPlayer2(p2);
         name_p2.setText(p2);
-        bangTiSo.setNumSet(6);
+        bangTiSo.setNumSet(nSet + 1);
         bangTiSo.setScore(1, 1, "0");
         bangTiSo.setScore(2, 1, "0");
-        //scoreboard = new int[nSet + 1][nSet + 1];
 
         gridView = (GridView) findViewById(R.id.gvAction);
         if(turn == 0)
@@ -234,14 +238,14 @@ public class TranDau extends ActionBarActivity {
     }
     public void p1WinGame()
     {
-        if(p1SetScore <= 5)
+        if(p1SetScore <= nGame - 1)
             p1SetScore++;
-        else if(p1SetScore == 6 && p2SetScore <= 5)
+        else if(p1SetScore == nGame && p2SetScore <= nGame - 1)
         {
             p1SetScore++;
             p1WinSet();
         }
-        else if(p1SetScore == 6 && p2SetScore == 6)
+        else if(p1SetScore == nGame && p2SetScore == nGame)
         {
             tieBreak();
         }
@@ -293,14 +297,14 @@ public class TranDau extends ActionBarActivity {
     }
     public void p2WinGame()
     {
-        if(p2SetScore <= 5)
+        if(p2SetScore <= nGame - 1)
             p2SetScore++;
-        else if(p2SetScore == 6 && p1SetScore <= 5)
+        else if(p2SetScore == nGame && p1SetScore <= nGame - 1)
         {
             p2SetScore++;
             p2WinSet();
         }
-        else if(p2SetScore == 6 && p1SetScore == 6)
+        else if(p2SetScore == nGame && p1SetScore == nGame)
         {
             tieBreak();
         }
