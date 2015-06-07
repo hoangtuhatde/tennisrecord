@@ -30,13 +30,15 @@ public class TranDau extends ActionBarActivity {
     int p2nSetWin;
     boolean firstServe;
     BangTiSo bangTiSo;
+    TennisStatistic stats;
+
     //int[][] scoreboard;
     static final String[] startAction = new String[] {
             "null", "Ace","Force error", "Unforce error" };
     final String[] p1Serve = new String[] {
             "P1 Ace", "P2 Return Winner", "P1 Service Winner", "P2 Return Error", "P1 Fault", "Ball in play"};
     final String[] p2Serve = new String[] {
-            "P1 Return Winner", "P2 Ace", "P1 Return Error", "P2 Service Winner", "P1 Ball in play", "Fault"};
+            "P1 Return Winner", "P2 Ace", "P1 Return Error", "P2 Service Winner", "P1 Ball in play", "P2 Fault"};
     final String[] bip = new String[] {
             "P1 Winner", "P2 Winner", "P1 Forced Error", "P2 Forced Error", "P1 Unforced Error", "P2 Unforced Error"};
     @Override
@@ -45,7 +47,9 @@ public class TranDau extends ActionBarActivity {
         setContentView(R.layout.activity_tran_dau);
         TextView name_p1 = (TextView)findViewById(R.id.tvNamePlayer1);
         TextView name_p2 = (TextView)findViewById(R.id.tvNamePlayer2);
+        final TextView tvServe = (TextView)findViewById(R.id.tvServe);
         bangTiSo = (BangTiSo) findViewById(R.id.csBoard1);
+        stats = new TennisStatistic();
         i = getIntent();
         Bundle extras = i.getExtras();
         p1 = extras.getString("p1");
@@ -56,6 +60,7 @@ public class TranDau extends ActionBarActivity {
         location = extras.getString("location");
         bangTiSo.setPlayer1(p1);
         name_p1.setText(p1);
+        firstServe = true;
         p1GameScore = 0;
         p2GameScore = 0;
         p1SetScore = 0;
@@ -80,15 +85,126 @@ public class TranDau extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 String state = actionAdapter.tennisAction[position];
-                if(state.equals("P1 Ace") || state.equals("P1 Service Winner") || state.equals("P1 Return Error") || state.equals("P1 Winner") || state.equals("P2 Forced Error") || state.equals("P2 Unforced Error"))
+                if(state.equals("P1 Ace"))
                 {
                     p1WinPoint();
                     updateGridView();
+                    stats.getStats("Ace").i1++;
                 }
+                else if (state.equals("P1 Service Winner"))
+                {
+                    p1WinPoint();
+                    updateGridView();
+                    stats.getStats("Service Winner").i1++;
+                }
+                else if (state.equals("P1 Fault"))
+                {
+                    if(firstServe)
+                    {
+                        tvServe.setText("2nd serve");
+                        firstServe = false;
+                    }
+                    else {
+                        p2WinPoint();
+                        updateGridView();
+                        stats.getStats("Fault").i1++;
+                        tvServe.setText("1st serve");
+                        firstServe = true;
+                    }
+                }
+                else if (state.equals("P1 Return Winner"))
+                {
+                    p1WinPoint();
+                    updateGridView();
+                    stats.getStats("Return Winner").i1++;
+                }
+                else if (state.equals("P1 Return Error"))
+                {
+                    p2WinPoint();
+                    updateGridView();
+                    stats.getStats("Return Error").i1++;
+                }
+                else if (state.equals("P1 Winner"))
+                {
+                    p1WinPoint();
+                    updateGridView();
+                    stats.getStats("Winner").i1++;
+                }
+                else if (state.equals("P1 Forced Error"))
+                {
+                    p2WinPoint();
+                    updateGridView();
+                    stats.getStats("Forced Error").i1++;
+                }
+                else if (state.equals("P1 Unforced Error"))
+                {
+                    p2WinPoint();
+                    updateGridView();
+                    stats.getStats("Unforced Error").i1++;
+                }
+
                 else if (state.equals("Ball in play"))
                 {
                     actionAdapter.UpdateAction(bip);
                     actionAdapter.notifyDataSetChanged();
+                }
+
+                if(state.equals("P2 Ace"))
+                {
+                    p2WinPoint();
+                    updateGridView();
+                    stats.getStats("Ace").i2++;
+                }
+                else if (state.equals("P2 Service Winner"))
+                {
+                    p2WinPoint();
+                    updateGridView();
+                    stats.getStats("Service Winner").i2++;
+                }
+                else if (state.equals("P2 Fault"))
+                {
+                    if(firstServe)
+                    {
+                        tvServe.setText("2nd serve");
+                        firstServe = false;
+                    }
+                    else {
+                        p1WinPoint();
+                        updateGridView();
+                        stats.getStats("Fault").i2++;
+                        tvServe.setText("1st serve");
+                        firstServe = true;
+                    }
+                }
+                else if (state.equals("P2 Return Winner"))
+                {
+                    p2WinPoint();
+                    updateGridView();
+                    stats.getStats("Return Winner").i2++;
+                }
+                else if (state.equals("P2 Return Error"))
+                {
+                    p1WinPoint();
+                    updateGridView();
+                    stats.getStats("Return Error").i2++;
+                }
+                else if (state.equals("P2 Winner"))
+                {
+                    p2WinPoint();
+                    updateGridView();
+                    stats.getStats("Winner").i2++;
+                }
+                else if (state.equals("P2 Forced Error"))
+                {
+                    p1WinPoint();
+                    updateGridView();
+                    stats.getStats("Forced Error").i2++;
+                }
+                else if (state.equals("P2 Unforced Error"))
+                {
+                    p1WinPoint();
+                    updateGridView();
+                    stats.getStats("Unforced Error").i2++;
                 }
             }
         });
@@ -109,8 +225,10 @@ public class TranDau extends ActionBarActivity {
         }
         else if(p1GameScore == 45)
             p1WinGame();
-        if(p1GameScore == 45)
+        if(p1GameScore == 45) {
             bangTiSo.setScore(1, 1, "Adv");
+            bangTiSo.setScore(2, 1, "");
+        }
         else
             bangTiSo.setScore(1, 1, String.valueOf(p1GameScore));
     }
@@ -128,6 +246,10 @@ public class TranDau extends ActionBarActivity {
             tieBreak();
         }
         bangTiSo.setScore(1, nSet + 2 - set, String.valueOf(p1SetScore));
+        p1GameScore = 0;
+        p2GameScore = 0;
+        bangTiSo.setScore(1, 1, "0");
+        bangTiSo.setScore(2, 1, "0");
         changeTurn();
     }
     public void p1WinSet()
@@ -135,9 +257,71 @@ public class TranDau extends ActionBarActivity {
         set++;
         p1nSetWin++;
         if (p1nSetWin > nSet / 2)
+        {
             p1MatchWin();
+            p1nSetWin = 0;
+            p2nSetWin = 0;
+        }
+
     }
     public void p1MatchWin()
+    {
+        //save data, end activity
+    }
+    public void p2WinPoint() {
+        if (p2GameScore == 0)
+            p2GameScore = 15;
+        else if (p2GameScore == 15)
+            p2GameScore = 30;
+        else if (p2GameScore == 30)
+            p2GameScore = 40;
+        else if (p2GameScore == 40)
+        {
+            if (p1GameScore == 40)
+                p2GameScore = 45;
+            else
+                p2WinGame();
+        }
+        else if(p2GameScore == 45)
+            p2WinGame();
+        if(p2GameScore == 45) {
+            bangTiSo.setScore(2, 1, "Adv");
+            bangTiSo.setScore(1, 1, "");
+        }
+        else
+            bangTiSo.setScore(2, 1, String.valueOf(p2GameScore));
+    }
+    public void p2WinGame()
+    {
+        if(p2SetScore <= 5)
+            p2SetScore++;
+        else if(p2SetScore == 6 && p1SetScore <= 5)
+        {
+            p2SetScore++;
+            p2WinSet();
+        }
+        else if(p2SetScore == 6 && p1SetScore == 6)
+        {
+            tieBreak();
+        }
+        bangTiSo.setScore(2, nSet + 2 - set, String.valueOf(p2SetScore));
+        p2GameScore = 0;
+        p1GameScore = 0;
+        bangTiSo.setScore(1, 1, "0");
+        bangTiSo.setScore(2, 1, "0");
+        changeTurn();
+    }
+    public void p2WinSet()
+    {
+        set++;
+        p2nSetWin++;
+        if (p2nSetWin > nSet / 2) {
+            p1nSetWin = 0;
+            p2nSetWin = 0;
+            p2MatchWin();
+        }
+    }
+    public void p2MatchWin()
     {
         //save data, end activity
     }
