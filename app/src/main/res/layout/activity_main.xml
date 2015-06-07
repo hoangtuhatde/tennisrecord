@@ -34,6 +34,15 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Lịch sử"
+        android:id="@+id/btLichSu"
+        android:layout_gravity="center"
+        android:background="#73c5e1"
+        android:layout_margin="10px" />
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Hướng dẫn"
         android:id="@+id/btHuongDan"
         android:layout_gravity="center"

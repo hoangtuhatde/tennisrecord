@@ -2,10 +2,12 @@
 
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:text=" "
-    android:layout_margin="10px"
+    android:textSize="15dp"
+    android:layout_margin="10dp"
     android:background="@drawable/border"
-    android:padding="20px" />
+    android:padding="13px"
+    android:minWidth="35dp"/>

@@ -141,13 +141,13 @@ public class BangTiSo extends LinearLayout {
         TableRow row1 = (TableRow)convertView.findViewById(R.id.csrow1);
         row1.removeAllViews();
 
-        View temp_player1 = inflater.inflate(R.layout.tvplayer_layout, null);
+        TextView temp_player1 = (TextView)inflater.inflate(R.layout.tvplayer_layout, null);
         temp_player1.setId(R.id.txPlayer1);
         row1.addView(temp_player1);
         setPlayer1(boardInfo.Player1);
         for(int i =0; i < boardInfo.numSet; i++)
         {
-            View v = inflater.inflate(R.layout.tvscore_layout, null);
+            TextView v = (TextView)inflater.inflate(R.layout.tvscore_layout, null);
             row1.addView(v);
         }
 
@@ -155,13 +155,13 @@ public class BangTiSo extends LinearLayout {
         TableRow row2 = (TableRow)convertView.findViewById(R.id.csrow2);
         row2.removeAllViews();
 
-        View temp_player2 = inflater.inflate(R.layout.tvplayer_layout, null);
+        TextView temp_player2 = (TextView)inflater.inflate(R.layout.tvplayer_layout, null);
         temp_player2.setId(R.id.txPlayer2);
         row2.addView(temp_player2);
         setPlayer2(boardInfo.Player2);
         for(int i =0; i < boardInfo.numSet; i++)
         {
-            View v = inflater.inflate(R.layout.tvscore_layout, null);
+            TextView v = (TextView)inflater.inflate(R.layout.tvscore_layout, null);
             row2.addView(v);
         }
         return true;
@@ -223,5 +223,18 @@ public class BangTiSo extends LinearLayout {
         setScore.setText(score);
         setScore.setBackgroundColor(Color.BLACK);
         setScore.setTextColor(Color.YELLOW);
+    }
+    public void  setWinner(int player)
+    {
+        if(player == 1)
+        {
+            TextView player1 = (TextView)convertView.findViewById(R.id.txPlayer1);
+            player1.setTextColor(Color.RED);
+        }
+        else if(player == 2)
+        {
+            TextView player2 = (TextView)convertView.findViewById(R.id.txPlayer2);
+            player2.setTextColor(Color.RED);
+        }
     }
 }
