@@ -25,21 +25,24 @@ public class ThongTin extends ActionBarActivity {
         final EditText etLocation = (EditText) findViewById(R.id.edLocation);
         final Spinner spType = (Spinner) findViewById(R.id.spinner_Type);
         final Spinner spHandicap = (Spinner) findViewById(R.id.spinner_handicap);
+        final Spinner spTurn = (Spinner) findViewById(R.id.spinner_Turn);
 
         btStartMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String p1 = etP1.getText().toString();
-                final String p2 = etP2.getText().toString();
-                final String location = etLocation.getText().toString();
-                final String type = spType.getSelectedItem().toString();
-                final String handicap = spHandicap.getSelectedItem().toString();
+                String p1 = etP1.getText().toString();
+                String p2 = etP2.getText().toString();
+                String location = etLocation.getText().toString();
+                String type = spType.getSelectedItem().toString();
+                long turn = spTurn.getSelectedItemId();
+                String handicap = spHandicap.getSelectedItem().toString();
                 Intent myIntent = new Intent(ThongTin.this, TranDau.class);
                 Bundle extras = new Bundle();
                 extras.putString("p1", p1);
                 extras.putString("p2", p2);
                 extras.putString("location", location);
                 extras.putString("type", type);
+                extras.putLong("turn", turn);
                 extras.putString("handicap", handicap);
                 myIntent.putExtras(extras);
                 ThongTin.this.startActivity(myIntent);
