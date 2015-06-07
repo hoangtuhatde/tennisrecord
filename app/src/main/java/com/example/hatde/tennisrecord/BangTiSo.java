@@ -197,4 +197,31 @@ public class BangTiSo extends LinearLayout {
         //Ghi điểm
         setScore.setText(score);
     }
+    //Ghi điểm
+    public void setScore(int player, int set, String score, boolean istemp)
+    {
+        if(!istemp)
+        {
+            return;
+        }
+        //KT input
+        if(player != 1 && player != 2)
+        {
+            return;
+        }
+        if(set <= 0 || set > boardInfo.numSet)
+        {
+            return;
+        }
+
+        //Lấy TextView
+        TableLayout tableLayout = (TableLayout) convertView.findViewById(R.id.cstable);
+        TableRow row =  (TableRow)tableLayout.getChildAt(player-1);
+        TextView setScore = (TextView) row.getChildAt(set);
+
+        //Ghi điểm
+        setScore.setText(score);
+        setScore.setBackgroundColor(Color.BLACK);
+        setScore.setTextColor(Color.YELLOW);
+    }
 }
