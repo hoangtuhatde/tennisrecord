@@ -36,6 +36,14 @@
             android:name=".ThongKe"
             android:label="@string/title_activity_thong_ke" >
         </activity>
+        <activity
+            android:name=".ThongKeNguoiChoi"
+            android:label="@string/title_activity_thong_ke_nguoi_choi" >
+        </activity>
+        <activity
+            android:name=".LichSu"
+            android:label="@string/title_activity_lich_su" >
+        </activity>
     </application>
 
 </manifest>

@@ -25,8 +25,17 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        Button btStats = (Button)findViewById(R.id.btThongKe);
-        btStats.setOnClickListener(new View.OnClickListener() {
+        Button btPlayerStats = (Button)findViewById(R.id.btThongKe);
+        btPlayerStats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, ThongKeNguoiChoi.class);
+                //myIntent.putExtra("key", value); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
+        Button btHistory = (Button)findViewById(R.id.btLichSu);
+        btHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(MainActivity.this, ThongKe.class);
