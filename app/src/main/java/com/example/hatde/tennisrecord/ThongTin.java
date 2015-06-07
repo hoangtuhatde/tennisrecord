@@ -30,7 +30,8 @@ public class ThongTin extends ActionBarActivity {
     String set;
     String game;
     long turn;
-    String handicap;
+    int handicap;
+    int whoHand;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,7 @@ public class ThongTin extends ActionBarActivity {
         final Spinner spType = (Spinner) findViewById(R.id.spinner_Type);
         final Spinner spDeuce = (Spinner) findViewById(R.id.spinner_Deuce);
         final Spinner spHandicap = (Spinner) findViewById(R.id.spinner_handicap);
+        final Spinner spWhoHand = (Spinner) findViewById(R.id.spinner_whoHand);
         final Spinner spTurn = (Spinner) findViewById(R.id.spinner_Turn);
         final EditText etNumSet = (EditText) findViewById(R.id.etNumSet);
         final EditText etNumGame = (EditText) findViewById(R.id.etNumGame);
@@ -80,7 +82,8 @@ public class ThongTin extends ActionBarActivity {
                 set = etNumSet.getText().toString();
                 game = etNumGame.getText().toString();
                 turn = spTurn.getSelectedItemId();
-                handicap = spHandicap.getSelectedItem().toString();
+                handicap = spHandicap.getSelectedItemPosition();
+                whoHand = spWhoHand.getSelectedItemPosition();
                 if(!check()) {
                     Toast t = Toast.makeText(getApplicationContext(), "Dữ liệu không hợp lệ", Toast.LENGTH_SHORT);
                     t.show();
@@ -93,7 +96,8 @@ public class ThongTin extends ActionBarActivity {
                 extras.putInt("tiebreak", type);
                 extras.putInt("deuce", deuce);
                 extras.putLong("turn", turn);
-                extras.putString("handicap", handicap);
+                extras.putInt("handicap", handicap);
+                extras.putInt("whoHand", whoHand);
                 extras.putInt("set", Integer.valueOf(set));
                 extras.putInt("game", Integer.valueOf(game));
                 myIntent.putExtras(extras);

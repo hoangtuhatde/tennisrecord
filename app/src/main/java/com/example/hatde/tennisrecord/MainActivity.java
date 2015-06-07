@@ -19,7 +19,7 @@ public class MainActivity extends ActionBarActivity {
         btMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, GhiTranDau.class);
+                Intent myIntent = new Intent(MainActivity.this, ThongTin.class);
                 //myIntent.putExtra("key", value); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
             }
