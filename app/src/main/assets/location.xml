@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LocationList>
+    <Location>
+        <Name>Westeros</Name>
+        <Longitude>155</Longitude>
+        <Latitude>277</Latitude>
+    </Location>
+    <Location>
+        <Name>Norking</Name>
+        <Longitude>345</Longitude>
+        <Latitude>1123</Latitude>
+    </Location>
+    <Location>
+        <Name>Decema</Name>
+        <Longitude>1234</Longitude>
+        <Latitude>1224</Latitude>
+    </Location>
+    <Location>
+        <Name>Summonrift</Name>
+        <Longitude>2123</Longitude>
+        <Latitude>1234</Latitude>
+    </Location>
+    <Location>
+        <Name>Catalan</Name>
+        <Longitude>3423</Longitude>
+        <Latitude>123</Latitude>
+    </Location>
+
+</LocationList>

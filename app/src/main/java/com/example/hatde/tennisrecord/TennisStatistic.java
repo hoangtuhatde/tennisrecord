@@ -11,15 +11,6 @@ public class TennisStatistic {
     public TennisStatistic()
     {
         tnstats = new ArrayList<TennisStats>();
-        addStats("Ace");
-        addStats("Service Winner");
-        addStats("Double Fault");
-        addStats("Return Winner");
-        addStats("Return Error");
-        addStats("Winner");
-        addStats("Forced Error");
-        addStats("Unforced Error");
-
     }
     public TennisStats getStats(String name)
     {
@@ -69,7 +60,7 @@ class TennisStats{
     {
         i1 = i;
     }
-    public void set2(int i)
+    public void setP2(int i)
     {
         i2 = i;
     }
