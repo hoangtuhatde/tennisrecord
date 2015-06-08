@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import handler.AssetsManager;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -15,6 +17,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //
+        AssetsManager manager = new AssetsManager(this.getApplicationContext());
         Button btMatch = (Button)findViewById(R.id.btGhiTranDau);
         btMatch.setOnClickListener(new View.OnClickListener() {
             @Override
