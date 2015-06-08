@@ -1,12 +1,10 @@
 package handler;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.DefaultHandler;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -22,8 +20,8 @@ import entities.*;
 public class AssetsManager {
     // Đối tượng quản lý thư mục asset trong một ứng dụng Android
     AssetManager assetManager;
-    ArrayList<Player> playerList;
-    ArrayList<Location> locationList;
+    private ArrayList<Player> playerList;
+    private ArrayList<Location> locationList;
     //
 
 
@@ -51,7 +49,7 @@ public class AssetsManager {
             InputSource inStream = new InputSource(is);
             //Bắt đầu xử lý dữ liệu vào
             xr.parse(inStream);
-            playerList = typeHandler.getPlayerList();
+            setPlayerList(typeHandler.getPlayerList());
             is.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,10 +73,26 @@ public class AssetsManager {
             InputSource inStream = new InputSource(is);
             //Bắt đầu xử lý dữ liệu vào
             xr.parse(inStream);
-            locationList = typeHandler.getLocationList();
+            setLocationList(typeHandler.getLocationList());
             is.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<Player> getPlayerList() {
+        return playerList;
+    }
+
+    public void setPlayerList(ArrayList<Player> playerList) {
+        this.playerList = playerList;
+    }
+
+    public ArrayList<Location> getLocationList() {
+        return locationList;
+    }
+
+    public void setLocationList(ArrayList<Location> locationList) {
+        this.locationList = locationList;
     }
 }

@@ -15,13 +15,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import handler.AssetsManager;
+
 
 public class ThongTin extends ActionBarActivity {
 
-    String[] arrayLocation = new String[] {
-            "HCM", "HN","Lào"};
-    String[] arrayPlayer = new String[] {
-            "Adam", "Menic","Mimo"};
+    String[] arrayLocation;
+    String[] arrayPlayer;
     String p1;
     String p2;
     String location;
@@ -36,6 +36,7 @@ public class ThongTin extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_tin);
+
         Button btStartMatch = (Button)findViewById(R.id.btStartMatch_info);
         final AutoCompleteTextView atP1 = (AutoCompleteTextView) findViewById(R.id.atPlayer1);
         atP1.setThreshold(0);
@@ -43,9 +44,20 @@ public class ThongTin extends ActionBarActivity {
         atP2.setThreshold(0);
         final AutoCompleteTextView atLocation = (AutoCompleteTextView) findViewById(R.id.spinner_Location);
         atLocation.setThreshold(0);
+
+        AssetsManager manager = new AssetsManager(this.getApplicationContext());
+        arrayPlayer = new String[manager.getPlayerList().size()];
+        for(int i = 0; i< manager.getPlayerList().size();i++)
+        {
+            arrayPlayer[i] = manager.getPlayerList().get(i).getName();
+        }
         //lay ds location da luu
         //arrayLocation = ...getListLocation
-
+        arrayLocation = new String[manager.getLocationList().size()];
+        for(int i = 0; i< manager.getLocationList().size();i++)
+        {
+            arrayLocation[i] = manager.getLocationList().get(i).getName();
+        }
         atLocation.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, arrayLocation));
 

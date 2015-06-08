@@ -11,15 +11,23 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import handler.AssetsManager;
+
 
 public class ThongKeNguoiChoi extends ActionBarActivity {
 
     ListView lvPlayer;
-    String[] arrayPlayer = new String[]{"Adam", "Memo"};
+    String[] arrayPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_ke_nguoi_choi);
+        AssetsManager manager = new AssetsManager(this.getApplicationContext());
+        arrayPlayer = new String[manager.getPlayerList().size()];
+        for(int i = 0; i< manager.getPlayerList().size();i++)
+        {
+            arrayPlayer[i] = manager.getPlayerList().get(i).getName();
+        }
         lvPlayer = (ListView)findViewById(R.id.lvPlayer);
         ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayPlayer);
         lvPlayer.setAdapter(adapter);

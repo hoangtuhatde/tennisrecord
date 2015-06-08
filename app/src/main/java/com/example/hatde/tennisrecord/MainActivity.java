@@ -18,7 +18,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //
-        AssetsManager manager = new AssetsManager(this.getApplicationContext());
+
         Button btMatch = (Button)findViewById(R.id.btGhiTranDau);
         btMatch.setOnClickListener(new View.OnClickListener() {
             @Override

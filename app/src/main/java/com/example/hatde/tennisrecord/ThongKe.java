@@ -1,5 +1,6 @@
 package com.example.hatde.tennisrecord;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import entities.Player;
+import handler.AssetsManager;
+
 
 public class ThongKe extends ActionBarActivity {
     public TennisStatistic stats;
@@ -18,11 +22,25 @@ public class ThongKe extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_ke);
+        Intent inten = getIntent();
+        Bundle extras = inten.getExtras();
         stats = new TennisStatistic();
-        stats.addStats("Ace", 1, 4, false);
-        stats.addStats("Force", 2, 2, false);
-        stats.addStats("Un Force", 2, 1, false);
-        stats.getStats("Ace").i2 = 3;
+        AssetsManager manager = new AssetsManager(this.getApplicationContext());
+        String nameplayer = extras.getString("Player");
+
+        if(nameplayer != null) {
+            for (int i = 0; i < manager.getPlayerList().size(); i++) {
+                if(manager.getPlayerList().get(i).getName().equals(nameplayer))
+                {
+                    Player p = manager.getPlayerList().get(i);
+                    stats = p.getPlayerStats();
+                    ((TextView)findViewById(R.id.tvPlayer1_statist)).setText(nameplayer);
+                    break;
+                }
+            }
+
+
+        }
 
         TableLayout tbStats = (TableLayout)findViewById(R.id.tbStatist);
         for(int i = 0; i < stats.tnstats.size();i++)
