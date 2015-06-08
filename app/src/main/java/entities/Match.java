@@ -10,6 +10,12 @@ public class Match {
     private TennisStatistic matchStats;
     private BoardInfo boardInfo;
 
+    public Match()
+    {
+        matchStats = new TennisStatistic();
+        boardInfo = new BoardInfo();
+    }
+
     public TennisStatistic getMatchStats() {
         return matchStats;
     }

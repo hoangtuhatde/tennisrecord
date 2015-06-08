@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 import org.xml.sax.InputSource;
+import org.xml.sax.XMLFilter;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -24,7 +25,7 @@ public class AssetsManager {
     AssetManager assetManager;
     ArrayList<Player> playerList;
     ArrayList<Location> locationList;
-    //
+    ArrayList<Match> matchList;
 
 
     public AssetsManager(Context mainActivity)
@@ -32,6 +33,7 @@ public class AssetsManager {
         assetManager = mainActivity.getAssets();
         parsePlayerXML(new PlayerXMLHandler(),"player.xml");
         parseLocationXML(new LocationXMLHandler(),"location.xml");
+        parseMatchXML(new MatchXMLHandler(), "match.xml");
     }
 
     private void parsePlayerXML(PlayerXMLHandler typeHandler, String filePathXML)
@@ -44,7 +46,7 @@ public class AssetsManager {
             SAXParser sp = spf.newSAXParser();
             //Đối tượng đọc XML
             XMLReader xr = sp.getXMLReader();
-
+            
             //Thiết lập nội dung xử lý
             xr.setContentHandler(typeHandler);
             //Nguồn dữ liệu vào
@@ -76,6 +78,30 @@ public class AssetsManager {
             //Bắt đầu xử lý dữ liệu vào
             xr.parse(inStream);
             locationList = typeHandler.getLocationList();
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parseMatchXML(MatchXMLHandler typeHandler, String filePathXML)
+    {
+        try {
+            //Lấy 1 tập tin làm dữ liệu đầu vào
+            InputStream is = assetManager.open(filePathXML);
+            //Tạo đối tượng dùng cho việc phân tích cú pháp  tài liệu XML
+            SAXParserFactory spf = SAXParserFactory.newInstance();
+            SAXParser sp = spf.newSAXParser();
+            //Đối tượng đọc XML
+            XMLReader xr = sp.getXMLReader();
+
+            //Thiết lập nội dung xử lý
+            xr.setContentHandler(typeHandler);
+            //Nguồn dữ liệu vào
+            InputSource inStream = new InputSource(is);
+            //Bắt đầu xử lý dữ liệu vào
+            xr.parse(inStream);
+            matchList = typeHandler.getMatchList();
             is.close();
         } catch (Exception e) {
             e.printStackTrace();
