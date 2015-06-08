@@ -47,6 +47,7 @@ public class TranDau extends ActionBarActivity {
             "P1 Return Winner", "P2 Ace", "P1 Return Error", "P2 Service Winner", "P1 Ball in play", "P2 Fault"};
     final String[] bip = new String[] {
             "P1 Winner", "P2 Winner", "P1 Forced Error", "P2 Forced Error", "P1 Unforced Error", "P2 Unforced Error"};
+    final String[] win = new String[] {"null"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -345,7 +346,8 @@ public class TranDau extends ActionBarActivity {
     {
         Toast t = Toast.makeText(getApplicationContext(), "Player 1 Wins", Toast.LENGTH_SHORT);
             t.show();
-        gridView.removeAllViews();
+        actionAdapter.UpdateAction(win);
+        actionAdapter.notifyDataSetChanged();
         Button stat = (Button)findViewById(R.id.btStats);
         stat.setEnabled(true);
     }
@@ -416,7 +418,8 @@ public class TranDau extends ActionBarActivity {
     {
         Toast t = Toast.makeText(getApplicationContext(), "Player 2 Wins", Toast.LENGTH_SHORT);
         t.show();
-        gridView.removeAllViews();
+        actionAdapter.UpdateAction(win);
+        actionAdapter.notifyDataSetChanged();
         Button stat = (Button)findViewById(R.id.btStats);
         stat.setEnabled(true);
     }

@@ -99,6 +99,7 @@ public class ThongTin extends ActionBarActivity {
                 if(!check()) {
                     Toast t = Toast.makeText(getApplicationContext(), "Dữ liệu không hợp lệ", Toast.LENGTH_SHORT);
                     t.show();
+                    return;
                 }
                 Intent myIntent = new Intent(ThongTin.this, TranDau.class);
                 Bundle extras = new Bundle();

@@ -1,12 +1,13 @@
 package com.example.hatde.tennisrecord;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Saturn on 6/6/2015.
  */
-public class TennisStatistic {
+public class TennisStatistic implements Serializable{
     List<TennisStats> tnstats;
     public TennisStatistic()
     {
@@ -46,7 +47,8 @@ public class TennisStatistic {
         tnstats.add(t);
     }
 }
-class TennisStats{
+
+class TennisStats implements Serializable {
     public String stats;
     public int i1;
     public int i2;

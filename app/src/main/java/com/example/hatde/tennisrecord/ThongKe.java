@@ -14,7 +14,7 @@ import java.util.List;
 
 import entities.Player;
 import handler.AssetsManager;
-
+import java.io.Serializable;
 
 public class ThongKe extends ActionBarActivity {
     public TennisStatistic stats;
@@ -27,7 +27,7 @@ public class ThongKe extends ActionBarActivity {
         stats = new TennisStatistic();
         AssetsManager manager = new AssetsManager(this.getApplicationContext());
         String nameplayer = extras.getString("Player");
-
+        TennisStatistic nstats = (TennisStatistic)extras.getSerializable("Stat");
         if(nameplayer != null) {
             for (int i = 0; i < manager.getPlayerList().size(); i++) {
                 if(manager.getPlayerList().get(i).getName().equals(nameplayer))
@@ -41,7 +41,14 @@ public class ThongKe extends ActionBarActivity {
 
 
         }
-
+        else if(nstats != null)
+        {
+            stats = nstats;
+            String p1 = extras.getString("P1");
+            String p2 = extras.getString("P2");
+            ((TextView)findViewById(R.id.tvPlayer1_statist)).setText(p1);
+            ((TextView)findViewById(R.id.tvPlayer2_statist)).setText(p2);
+        }
         TableLayout tbStats = (TableLayout)findViewById(R.id.tbStatist);
         for(int i = 0; i < stats.tnstats.size();i++)
         {
