@@ -48,6 +48,19 @@ public class TranDau extends ActionBarActivity {
     final String[] bip = new String[] {
             "P1 Winner", "P2 Winner", "P1 Forced Error", "P2 Forced Error", "P1 Unforced Error", "P2 Unforced Error"};
     final String[] win = new String[] {"null"};
+    private View.OnClickListener onlisten = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Bundle extras = new Bundle();
+            Intent myIntent = new Intent(TranDau.this, ThongKe.class);
+            extras.putSerializable("Stat", stats);
+            extras.putString("P1", p1);
+            extras.putString("P2", p2);
+            myIntent.putExtras(extras);
+            TranDau.this.startActivity(myIntent);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +70,16 @@ public class TranDau extends ActionBarActivity {
         TextView tvLocation = (TextView)findViewById(R.id.tvLocation);
         final TextView tvServe = (TextView)findViewById(R.id.tvServe);
         bangTiSo = (BangTiSo) findViewById(R.id.csBoard1);
+
         stats = new TennisStatistic();
+        stats.addStats("Ace");
+        stats.addStats("Service Winner");
+        stats.addStats("Double Fault");
+        stats.addStats("Return Winner");
+        stats.addStats("Return Error");
+        stats.addStats("Winner");
+        stats.addStats("Forced Error");
+        stats.addStats("Unforced Error");
         i = getIntent();
         Bundle extras = i.getExtras();
         p1 = extras.getString("p1");
@@ -350,6 +372,7 @@ public class TranDau extends ActionBarActivity {
         actionAdapter.notifyDataSetChanged();
         Button stat = (Button)findViewById(R.id.btStats);
         stat.setEnabled(true);
+        stat.setOnClickListener(onlisten);
     }
     public void p2WinPoint() {
         if (p2GameScore == 0)
@@ -422,6 +445,7 @@ public class TranDau extends ActionBarActivity {
         actionAdapter.notifyDataSetChanged();
         Button stat = (Button)findViewById(R.id.btStats);
         stat.setEnabled(true);
+        stat.setOnClickListener(onlisten);
     }
     public void tieBreak()
     {

@@ -23,9 +23,7 @@ import entities.*;
 public class AssetsManager {
     // Đối tượng quản lý thư mục asset trong một ứng dụng Android
     AssetManager assetManager;
-    private ArrayList<Player> playerList;
-    private ArrayList<Location> locationList;
-    //
+
     ArrayList<Player> playerList;
     ArrayList<Location> locationList;
     ArrayList<Match> matchList;
